@@ -17,7 +17,7 @@ public class ReadFile {
             String line;
             while((line  = bufferedReader.readLine())!= null){
                 if(!line.startsWith(";")) {
-                    printMenu += count + " - " + line.replace("ç", "c").replace("ã", "a").replace(";", "").replace("é", "e") + "\n";
+                    printMenu += count + " - " + line + "\n";
                     count++;
                 }
             }

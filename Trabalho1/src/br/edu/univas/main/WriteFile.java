@@ -16,11 +16,11 @@ public class WriteFile {
         return null;
     }
 
-    public static void createFile(String nameLocal) {
+    public static void createFile(String nameLocal,String local) {
         if (nameLocal != null) {
             try {
                 Scanner leitura = new Scanner(System.in);
-                FileWriter fileWriter = new FileWriter(ReadFile.CSV_FILE);
+                FileWriter fileWriter = new FileWriter(local+nameLocal);
                 PrintWriter printWriter = new PrintWriter(fileWriter);
                 String name = "start";
                 System.out.println("Write [exit] to stop application");
@@ -39,6 +39,20 @@ public class WriteFile {
             }
 
         }
+    }
+
+    public static String newLocal(String newLocal){
+        int local = 0;
+        for(int i = 0; i < newLocal.length(); i++){
+            char barrel = newLocal.charAt(i);
+            String a = String.valueOf(barrel);
+            if(a.equals("\\")){
+                local = i;
+            }
+        }
+        String newLocalFile = newLocal.substring(0, local+1);
+
+        return newLocalFile;
     }
 }
 
