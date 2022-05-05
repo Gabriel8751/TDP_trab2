@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-
 public class WriteFile {
-
 
     public static String fileName(String nome, String data) {
         if (!nome.isEmpty()) {
@@ -27,7 +25,7 @@ public class WriteFile {
                 do {
                     name = leitura.nextLine();
                     if(name.equals("exit")){
-                        break;
+                        System.out.println("the system stopped");
                     }else {
                         printWriter.print(name + "\n");
                     }
@@ -42,17 +40,8 @@ public class WriteFile {
     }
 
     public static String newLocal(String newLocal){
-        int local = 0;
-        for(int i = 0; i < newLocal.length(); i++){
-            char barrel = newLocal.charAt(i);
-            String a = String.valueOf(barrel);
-            if(a.equals("\\")){
-                local = i;
-            }
-        }
+        int local = newLocal.lastIndexOf("\\");
         String newLocalFile = newLocal.substring(0, local+1);
-
         return newLocalFile;
     }
 }
-
