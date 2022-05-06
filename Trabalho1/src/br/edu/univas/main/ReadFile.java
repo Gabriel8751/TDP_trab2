@@ -4,9 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.Normalizer;
 
 public class ReadFile {
+
     static String CSV_FILE = System.getenv("CSV_FILE");
+
     public static String printSubjects(){
         int count = 1;
         String printMenu = ":::ATTENDENCE:::\n";
@@ -26,15 +29,16 @@ public class ReadFile {
                 printMenu += "9 - Cancel";
             }
             return printMenu;
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e){
             System.out.println("File don't exist");
         } catch (IOException e) {
             System.out.println("this file could not be read");
         }
         return null;
     }
+
     public static int countLines(String CSV_FILE) {
-        int count = 1;
+        int count = 0;
         try {
             FileReader fileReader = new FileReader(CSV_FILE);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -44,7 +48,7 @@ public class ReadFile {
                     count++;
                 }            }
             bufferedReader.close();
-            return count-1;
+            return count;
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -62,7 +66,7 @@ public class ReadFile {
             if(select > 0 && select <= numberLines) {
                 for (int i = 1; i <= select; i++) {
                     if(i == select) {
-                        subjectsSelected += line.replace(" ", "_").replace("ç","c").replace("ã","a").replace("é", "e").replace(";","").toLowerCase();
+                        subjectsSelected += line;
                     }
                     line = bufferedReader.readLine();
                 }
@@ -78,5 +82,13 @@ public class ReadFile {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String Normalize(String subject) {
+        if (subject != null){
+            subject = Normalizer.normalize(subject, Normalizer.Form.NFD);
+            subject = subject.replaceAll("[^\\p{ASCII}]", "");
+        }
+        return subject.replace(" ", "_").toLowerCase();
     }
 }
