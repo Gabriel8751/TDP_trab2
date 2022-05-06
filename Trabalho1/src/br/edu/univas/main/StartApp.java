@@ -13,7 +13,7 @@ public class StartApp {
         System.out.println(menu);
         int choice = scanInt();
         String subject = ReadFile.selectSubjects(choice, countLines);
-        String normalize = ReadFile.Normalize(subject);
+        String normalize = ReadFile.normalizeString(subject);
         WriteFile.createFile(WriteFile.fileName(normalize, data), forNewLocal);
     }
 
