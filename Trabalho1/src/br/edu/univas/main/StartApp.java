@@ -1,6 +1,5 @@
 package br.edu.univas.main;
 
-import java.io.Writer;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -14,7 +13,8 @@ public class StartApp {
         System.out.println(menu);
         int choice = scanInt();
         String subject = ReadFile.selectSubjects(choice, countLines);
-        WriteFile.createFile(WriteFile.fileName(subject, data), forNewLocal);
+        String normalize = ReadFile.Normalize(subject);
+        WriteFile.createFile(WriteFile.fileName(normalize, data), forNewLocal);
     }
 
     public static int scanInt(){
