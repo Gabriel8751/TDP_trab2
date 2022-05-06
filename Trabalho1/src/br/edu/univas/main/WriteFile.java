@@ -25,7 +25,7 @@ public class WriteFile {
                 do {
                     name = leitura.nextLine();
                     if(name.equals("exit")){
-                        System.out.println("the system stopped");
+                        System.out.println("the application stopped");
                     }else {
                         printWriter.print(name + "\n");
                     }
