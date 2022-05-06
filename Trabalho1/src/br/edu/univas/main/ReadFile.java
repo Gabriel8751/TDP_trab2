@@ -84,7 +84,7 @@ public class ReadFile {
         }
     }
 
-    public static String Normalize(String subject) {
+    public static String normalizeString(String subject) {
         if (subject != null){
             subject = Normalizer.normalize(subject, Normalizer.Form.NFD);
             subject = subject.replaceAll("[^\\p{ASCII}]", "");
