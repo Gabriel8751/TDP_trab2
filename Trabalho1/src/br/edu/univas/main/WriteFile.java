@@ -20,7 +20,7 @@ public class WriteFile {
                 Scanner leitura = new Scanner(System.in);
                 FileWriter fileWriter = new FileWriter(local+nameLocal);
                 PrintWriter printWriter = new PrintWriter(fileWriter);
-                String name = "start";
+                String name;
                 System.out.println("Write [exit] to stop application");
                 do {
                     name = leitura.nextLine();
@@ -33,7 +33,7 @@ public class WriteFile {
                 printWriter.close();
                 leitura.close();
             } catch (IOException e) {
-                System.out.println("this file could not be write");;
+                System.out.println("this file could not be write");
             }
 
         }
@@ -41,7 +41,6 @@ public class WriteFile {
 
     public static String newLocal(String newLocal){
         int local = newLocal.lastIndexOf("\\");
-        String newLocalFile = newLocal.substring(0, local+1);
-        return newLocalFile;
+        return newLocal.substring(0, local+1);
     }
 }
