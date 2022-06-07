@@ -23,15 +23,15 @@ public class WriteFile {
                 String name;
                 System.out.println("Write [exit] to stop application");
                 do {
-                    name = leitura.nextLine();
+                    name = leitura.next();
                     if(name.equals("exit")){
+                    	
                         System.out.println("the application stopped");
                     }else {
-                        printWriter.print(name + "\n");
+                        printWriter.println(name);
                     }
                 }while(!name.contains("exit"));
                 printWriter.close();
-                leitura.close();
             } catch (IOException e) {
                 System.out.println("this file could not be write");
             }
