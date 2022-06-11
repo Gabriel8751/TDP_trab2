@@ -25,9 +25,8 @@ public class ReadFile {
                 }
             }
             bufferedReader.close();
-            if(count < 9) {
-                printMenu += "9 - Cancel";
-            }
+            printMenu += "9 - Cancel";
+            
             return printMenu;
         } catch (FileNotFoundException e){
             System.out.println("File don't exist");
